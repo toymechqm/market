@@ -1,8 +1,7 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import PokerHand from "./PokerHand";
 import styled from "styled-components";
 import { Hand as HandSolver } from "pokersolver";
-import PreviousHands from "./PreviousHands";
 
 const S = {
   PlayContainer: styled.div``,
@@ -49,7 +48,7 @@ const PlayArea = () => {
       {handName && <marquee>{handName}</marquee>}
       <PokerHand cards={cardHistory[0]} />
       <div>
-        <button onClick={shuffle}>Shuffle</button>
+        <button onClick={shuffle}>New Deck</button>
         {deckId && (
           <>
             <button onClick={drawCards}>Draw Cards</button>
@@ -62,7 +61,7 @@ const PlayArea = () => {
         <ul>
           {cardHistory.slice(1).map((el, i) => (
             <S.HistoricalHand key={i}>
-              <S.Num>{i+1}</S.Num>
+              <S.Num>{i + 1}</S.Num>
               <PokerHand cards={el} />
             </S.HistoricalHand>
           ))}
